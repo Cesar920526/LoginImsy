@@ -19,11 +19,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private BCPasswordEncoder bcPasswordEncoder;
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder builder) throws Exception {
-        builder.userDetailsService(userDetailsService).passwordEncoder(bcPasswordEncoder.passwordEncoder());
-    }
-
     @Override //Metodo para realizar la autorizacion de roles para que vean ciertas instancias de paginas
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -31,11 +26,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .hasRole("ADMIN")
                 .antMatchers("/")
                     .hasAnyRole("USER", "ADMIN")
+                .antMatchers("/login*")
+                    .permitAll()
+                    .anyRequest().authenticated()
                     .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/login.html")
                 .permitAll()
                 ;
+    }
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder builder) throws Exception {
+        builder.userDetailsService(userDetailsService).passwordEncoder(bcPasswordEncoder.passwordEncoder());
     }
 
 }
