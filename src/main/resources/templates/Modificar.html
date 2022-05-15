@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Modificar o eliminar usuarios</title>
+</head>
+<body>
+<h1>Modificar o eliminar usuarios</h1>
+<br/>
+<div th:if="${personas !=null and !personas.isEmpty()}">
+    <table th:border="1">
+        <tr>
+            <th>Identificacion</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Login</th>
+            <th>Contraseña</th>
+            <th>Rol</th>
+        </tr>
+
+        <tr th:each="persona : ${personas}">
+            <td th:text="${persona.identificacion}">Mostrar Identificacion</td>
+            <td th:text="${persona.nombre}">Mostrar Nombre</td>
+            <td th:text="${persona.email}">Mostrar Email</td>
+            <td th:text="${persona.login}">Mostrar Login</td>
+            <td th:text="${persona.contraseña}">Mostrar Contraseña</td>
+            <td th:text="${persona.rol}">Mostrar Rol</td>
+        </tr>
+    </table>
+</div>
+<div th:if="${personas == null or personas.isEmpty()}">
+    No hay personas
+</div>
+</body>
+</html>
