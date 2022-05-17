@@ -10,5 +10,9 @@
     <a th:href="@{/Registro}">Registro Usuarios</a>
     <br/>
     <a th:href="@{/Modificar}">Modificar o Eliminar Usuarios</a>
+    <br/>
+    <form method="post" th:action="@{/logout}">
+        <a href="#" onclick="this.parentNode.submit();">Logout</a>
+    </form>
 </body>
 </html>
