@@ -19,7 +19,7 @@ public class Usuario implements Serializable {
     @NotEmpty
     private String username;
     @NotEmpty
-    private String password;
+    private String contraseña;
     @OneToMany //Relacion que lleva con la tabla Rol
     @JoinColumn(name="id_usuario") //Es para saber donde tiene que ir esa relacion
     private List<Rol> roles; //Lista de objetos para recuperar roles asociados a un user

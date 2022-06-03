@@ -33,6 +33,6 @@ public class UsuarioService implements UserDetailsService {
         for(Rol rol: usuario.getRoles()){
            roles.add(new SimpleGrantedAuthority(rol.getNombre()));
         }
-        return new User(usuario.getUsername(), usuario.getPassword(), roles);
+        return new User(usuario.getUsername(), usuario.getContraseña(), roles);
     }
 }

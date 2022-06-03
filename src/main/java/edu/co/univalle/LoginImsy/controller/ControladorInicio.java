@@ -23,10 +23,10 @@ public class ControladorInicio {
     @Autowired // Inyeccion de dependencia.
     private PersonaService personaService;
 
-    /*@GetMapping("/login")
-    public String login(@AuthenticationPrincipal User user){
+    @GetMapping("/login")
+    public String login(){
         return "login";
-    }*/
+    }
 
     @GetMapping("/")
     public String inicio(@AuthenticationPrincipal User user){
